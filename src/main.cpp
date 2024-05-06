@@ -202,9 +202,9 @@ void setupTimer()
   //         0000 - Unused
   //             0 - Bit 2 of WGM
   //              001 - No clk prescale
+  
   OCR0A = 78;              // TOP value
   OCR0B = 0;               // Counter
-  TIMSK0 |= (1 << OCIE0B); // Enables interrupt on compare B
 
   // 16 BIT TIMER
   TCCR1A = 0b00100000;
@@ -215,6 +215,11 @@ void setupTimer()
   TCCR1B = 0b00001001;
   //         000 - Unused bits
   //            01 - Bits 32 of CTC
+}
+
+void setupInterrupts()
+{
+  TIMSK0 |= (1 << OCIE0B); // Enables interrupt on compare B
 }
 
 void announceTremor(int intensity)
