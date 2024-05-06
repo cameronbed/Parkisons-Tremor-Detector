@@ -105,10 +105,6 @@ void setup()
   Serial.println("Ready");
 
   CircuitPlayground.begin();
-
-  attachInterrupt(digitalPinToInterrupt(4), leftButtonFunction, CHANGE);
-
-  attachInterrupt(digitalPinToInterrupt(19), rightButtonFunction, CHANGE);
 }
 
 void loop()
@@ -171,7 +167,7 @@ void calculateFFT()
 
 ISR(TIMER0_COMPB_vect) // collecting data
 {
-  Serial.print("Timer 1 Interrupt");
+  Serial.print("Timer 0 Interrupt");
   float X, Y, Z;
   X = CircuitPlayground.motionX();
   Y = CircuitPlayground.motionY();
@@ -223,6 +219,7 @@ void setupTimer()
 
 void announceTremor(int intensity)
 {
+  Serial.print("Announcing Tremor");
   CircuitPlayground.setPixelColor(0, 255, 0, 0);
   CircuitPlayground.setPixelColor(1, 128, 128, 0);
   CircuitPlayground.setPixelColor(2, 0, 255, 0);
