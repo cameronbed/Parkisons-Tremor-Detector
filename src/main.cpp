@@ -86,18 +86,21 @@ void announceTremor(int intensity);
 
 void leftButtonFunction()
 {
+  Serial.print("Left Button Pushed");
   // stops evaluating
 }
 
 void rightButtonFunction()
 {
+  Serial.print("Right Button Pushed");
   // starts evaluating
 }
 
 void setup()
 {
   Serial.begin(115200);
-  while (!Serial);
+  while (!Serial)
+    ;
 
   Serial.println("Ready");
 
@@ -110,6 +113,15 @@ void setup()
 
 void loop()
 {
+  if ((PINF & (1 << 6)) != 0) // Right button
+  {
+    rightButtonFunction();
+  }
+  if ((PIND & (1 << 4)) != 0) // Left button
+  {
+    leftButtonFunction();
+  }
+  delay(100);
 }
 
 /*
@@ -163,7 +175,7 @@ ISR(TIMER0_COMPB_vect) // collecting data
   X = CircuitPlayground.motionX();
   Y = CircuitPlayground.motionY();
   Z = CircuitPlayground.motionZ();
-  
+
   float a = sqrt(X * X + Y * Y + Z * Z);
 
   if (samplesCounter > samples)
