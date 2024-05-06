@@ -171,6 +171,7 @@ void calculateFFT()
 
 ISR(TIMER0_COMPB_vect) // collecting data
 {
+  Serial.print("Timer 1 Interrupt");
   float X, Y, Z;
   X = CircuitPlayground.motionX();
   Y = CircuitPlayground.motionY();
@@ -188,6 +189,7 @@ ISR(TIMER0_COMPB_vect) // collecting data
 
 ISR(TIMER1_COMPB_vect) // calculating FFT
 {
+  Serial.print("Timer 1 Interrupt");
   void calculateFFT();
 }
 
