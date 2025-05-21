@@ -2,6 +2,8 @@
 
 **Tremor Detection with FFT** is an embedded system project that leverages the Adafruit Circuit Playground's accelerometer and onboard peripherals to detect potential tremors using Fast Fourier Transform (FFT). This project demonstrates signal processing on a microcontroller and integrates real-time sensor analysis, user interaction, and output feedback through LEDs and sound.
 
+Demonstration Video: https://youtu.be/MQ_tqzXgpcg
+
 ## Installation
 
 1. Clone the repository.
